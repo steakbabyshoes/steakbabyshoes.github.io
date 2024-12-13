@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>STEAKBABY | Modern Shoe Exchange</title>
+        <!doctype html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
+                <title>STEAKBABY | Modern Shoe Exchange</title>
+                <style>
+                    * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                        font-family: Arial, sans-serif;
+                    }
+
+                    body {
+                        background-color: #121212;
+                        color: #ffffff;
+                    }
+
+                    .container {
+                        max-width: 1200px;
+                        margin: 0 auto;
+                        padding: 0 20px;
+                    }
+
+                    .header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 20px 0;
+                        border-bottom: 1px solid #333;
+                    }
+
+                    .logo {
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: #ffffff;
+                        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+                    }
+
+                    .nav-links {
+                        display: flex;
+                        list-style: none;
+                        gap: 20px;
+                    }
+
+                    .nav-links a {
+                        text-decoration: none;
+                        color: #ffffff;
+                        transition: color 0.3s ease;
+                    }
+
+                    .nav-links a:hover {
+                        color: #e0e0e0;
+                    }
+
+                    .shoes-grid {
+                        display: grid;
+                        grid-template-columns: repeat(
+                            auto-fill,
+                            minmax(250px, 1fr)
+                        );
+                        gap: 2rem;
+                        padding: 2rem;
+                    }
+
+                    .shoe-card {
+                        border: 1px solid #333;
+                        border-radius: 8px;
+                        padding: 1rem;
+                        transition: all 0.2s ease;
+                        background: #1e1e1e;
+                    }
+
+                    .shoe-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+                        border-color: #ffffff;
+                    }
+
+                    .shoe-image {
+                        width: 100%;
+                        height: 200px;
+                        object-fit: cover;
+                        border-radius: 4px;
+                    }
+
+                    .shoe-info {
+                        padding: 1rem 0;
+                    }
+
+                    .shoe-info h3 {
+                        margin: 0;
+                        font-size: 1.1rem;
+                        color: #ffffff;
+                    }
+
+                    .brand {
+                        color: #999;
+                        margin: 0.5rem 0;
+                    }
+
+                    .price {
+                        font-weight: bold;
+                        color: #ffffff;
+                        margin: 0.5rem 0;
+                        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+                    }
+
+                    .size-select {
+                        width: 100%;
+                        padding: 0.5rem;
+                        margin: 0.5rem 0;
+                        background: #2d2d2d;
+                        color: #ffffff;
+                        border: 1px solid #444;
+                        border-radius: 4px;
+                    }
+
+                    .btn-add-to-cart {
+                        width: 100%;
+                        padding: 0.75rem;
+                        background-color: #ffffff;
+                        color: #000000;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        font-weight: bold;
+                        transition: all 0.3s ease;
+                    }
+
+                    .btn-add-to-cart:hover {
+                        background-color: #e0e0e0;
+                        transform: scale(1.02);
+                    }
+
+                    .filters {
+                        padding: 1rem 2rem;
+                        display: flex;
+                        gap: 1rem;
+                        background: #1e1e1e;
+                        border-bottom: 1px solid #333;
+                    }
+
+                    .filter-input {
+                        padding: 0.5rem;
+                        border: 1px solid #444;
+                        border-radius: 4px;
+                        background: #2d2d2d;
+                        color: #ffffff;
+                    }
+
+                    .filter-input::placeholder {
+                        color: #666;
+                    }
+
+                    .cart-sidebar {
+                        position: fixed;
+                        top: 0;
+                        right: -100%;
+                        width: 300px;
+                        height: 100vh;
+                        background: #1e1e1e;
+                        box-shadow: -2px 0 5px rgba(255, 255, 255, 0.1);
+                        transition: right 0.3s ease;
+                        padding: 20px;
+                        border-left: 1px solid #333;
+                    }
+
+                    .cart-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 20px;
+                    }
+
+                    .cart-header button {
+                        background: none;
+                        border: none;
+                        color: #ffffff;
+                        font-size: 24px;
+                        cursor: pointer;
+                    }
+
+                    .cart-footer {
+                        position: absolute;
+                        bottom: 20px;
+                        left: 20px;
+                        right: 20px;
+                    }
+
+                    .cart-footer button {
+                        width: 100%;
+                        padding: 10px;
+                        background: #ffffff;
+                        color: #000000;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        font-weight: bold;
+                        transition: background-color 0.3s ease;
+                    }
+
+                    .cart-footer button:hover {
+                        background: #e0e0e0;
+                    }
+
+                    #brands-page,
+                    #about-page,
+                    #contact-page {
+                        padding: 2rem;
+                        color: #ffffff;
+                    }
+
+                    /* Custom scrollbar */
+                    ::-webkit-scrollbar {
+                        width: 10px;
+                    }
+
+                    ::-webkit-scrollbar-track {
+                        background: #1e1e1e;
+                    }
+
+                    ::-webkit-scrollbar-thumb {
+                        background: #666;
+                        border-radius: 5px;
+                    }
+
+                    ::-webkit-scrollbar-thumb:hover {
+                        background: #888;
+                    }
+
+                    /* Additional subtle highlights */
+                    input:focus,
+                    select:focus {
+                        outline: 1px solid #ffffff;
+                    }
+
+                    .shoe-card:focus-within {
+                        border-color: #ffffff;
+                    }
+
+                    /* Loading effect */
+                    @keyframes shimmer {
+                        0% {
+                            background-position: -468px 0;
+                        }
+                        100% {
+                            background-position: 468px 0;
+                        }
+                    }
+
+                    /* Hover states */
+                    .nav-links a:hover {
+                        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+                    }
+
+                    .logo:hover {
+                        text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+                    }
+
+                    /* Color palette used:
+                    - Background: #121212
+                    - Card Background: #1e1e1e
+                    - Form Elements: #2d2d2d
+                    - Borders: #333, #444
+                    - Text: #ffffff, #e0e0e0, #999
+                    - Accent: #ffffff (for buttons and highlights)
+                    */
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <header class="header">
+                        <div class="logo">STEAKBABY</div>
+                        <ul class="nav-links">
+                            <li>
+                                <a href="#" onclick="showPage('shoes')"
+                                    >Shoes</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" onclick="showPage('brands')"
+                                    >Brands</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" onclick="showPage('about')"
+                                    >About</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" onclick="showPage('contact')"
+                                    >Contact</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" onclick="showCart()"
+                                    >Cart (<span id="cartCount">0</span>)</a
+                                >
+                            </li>
+                        </ul>
+                    </header>
+
+                    <div id="shoes-page">
+                        <div class="filters">
+                            <select
+                                id="brandFilter"
+                                class="filter-input"
+                                onchange="filterShoes()"
+                            >
+                                <option value="">All Brands</option>
+                                <option value="Nike">Nike</option>
+                                <option value="Adidas">Adidas</option>
+                                <option value="Jordan">Jordan</option>
+                                <option value="New Balance">New Balance</option>
+                            </select>
+                            <input
+                                type="number"
+                                id="minPrice"
+                                class="filter-input"
+                                placeholder="Min Price"
+                                onchange="filterShoes()"
+                            />
+                            <input
+                                type="number"
+                                id="maxPrice"
+                                class="filter-input"
+                                placeholder="Max Price"
+                                onchange="filterShoes()"
+                            />
+                            <select
+                                id="sizeFilter"
+                                class="filter-input"
+                                onchange="filterShoes()"
+                            >
+                                <option value="">All Sizes</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+
+                        <div id="shoesGrid" class="shoes-grid"></div>
+                    </div>
+
+                    <div id="brands-page" style="display: none">
+                        <h2>Brands</h2>
+                        <p>Our featured brands and collections</p>
+                    </div>
+
+                    <div id="about-page" style="display: none">
+                        <h2>About Us</h2>
+                        <p>Learn more about STEAKBABY</p>
+                    </div>
+
+                    <div id="contact-page" style="display: none">
+                        <h2>Contact</h2>
+                        <p>Get in touch with us</p>
+                    </div>
+
+                    <div id="cartSidebar" class="cart-sidebar">
+                        <div class="cart-header">
+                            <h2>Your Cart</h2>
+                            <button onclick="hideCart()">&times;</button>
+                        </div>
+                        <div id="cartItems"></div>
+                        <div class="cart-footer">
+                            <div>Total: $<span id="cartTotal">0</span></div>
+                            <button onclick="checkout()">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    // Shoe data
+                    const shoes = [
+                        {
+                            id: 1,
+                            name: "Air Jordan 1 High OG Chicago",
+                            brand: "Jordan",
+                            price: 170,
+                            sizes: [7, 8, 9, 10, 11, 12],
+                            image: "https://via.placeholder.com/300x200",
+                            description: "The classic Chicago colorway",
+                        },
+                        {
+                            id: 2,
+                            name: "Nike Dunk Low Panda",
+                            brand: "Nike",
+                            price: 110,
+                            sizes: [7, 8, 9, 10, 11],
+                            image: "https://via.placeholder.com/300x200",
+                            description: "Classic black and white colorway",
+                        },
+                        {
+                            id: 3,
+                            name: "Adidas Yeezy Boost 350",
+                            brand: "Adidas",
+                            price: 220,
+                            sizes: [8, 9, 10, 11, 12],
+                            image: "https://via.placeholder.com/300x200",
+                            description: "Comfortable Boost technology",
+                        },
+                        {
+                            id: 4,
+                            name: "New Balance 550",
+                            brand: "New Balance",
+                            price: 110,
+                            sizes: [7, 8, 9, 10, 11, 12],
+                            image: "https://via.placeholder.com/300x200",
+                            description: "Classic basketball silhouette",
+                        },
+                    ];
+
+                    // Functions
+                    function displayShoes(shoesToShow = shoes) {
+                        const shoesGrid = document.getElementById("shoesGrid");
+                        shoesGrid.innerHTML = "";
+
+                        shoesToShow.forEach((shoe) => {
+                            const shoeCard = document.createElement("div");
+                            shoeCard.className = "shoe-card";
+                            shoeCard.innerHTML = `
+                        <img src="${shoe.image}" alt="${shoe.name}" class="shoe-image">
+                        <div class="shoe-info">
+                            <h3>${shoe.name}</h3>
+                            <p class="brand">${shoe.brand}</p>
+                            <p class="price">$${shoe.price}</p>
+                            <select class="size-select">
+                                ${shoe.sizes.map((size) => `<option value="${size}">Size ${size}</option>`).join("")}
+                            </select>
+                            <button onclick="addToCart(${shoe.id})" class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    `;
+                            shoesGrid.appendChild(shoeCard);
+                        });
+                    }
+
+                    function filterShoes() {
+                        const brandFilter =
+                            document.getElementById("brandFilter").value;
+                        const minPrice =
+                            document.getElementById("minPrice").value;
+                        const maxPrice =
+                            document.getElementById("maxPrice").value;
+                        const sizeFilter =
+                            document.getElementById("sizeFilter").value;
+
+                        let filteredShoes = shoes;
+
+                        if (brandFilter) {
+                            filteredShoes = filteredShoes.filter(
+                                (shoe) => shoe.brand === brandFilter,
+                            );
+                        }
+
+                        if (minPrice) {
+                            filteredShoes = filteredShoes.filter(
+                                (shoe) => shoe.price >= parseInt(minPrice),
+                            );
+                        }
+
+                        if (maxPrice) {
+                            filteredShoes = filteredShoes.filter(
+                                (shoe) => shoe.price <= parseInt(maxPrice),
+                            );
+                        }
+
+                        if (sizeFilter) {
+                            filteredShoes = filteredShoes.filter((shoe) =>
+                                shoe.sizes.includes(parseInt(sizeFilter)),
+                            );
+                        }
+
+                        displayShoes(filteredShoes);
+                    }
+
+                    function showPage(pageId) {
+                        document.getElementById("shoes-page").style.display =
+                            "none";
+                        document.getElementById("brands-page").style.display =
+                            "none";
+                        document.getElementById("about-page").style.display =
+                            "none";
+                        document.getElementById("contact-page").style.display =
+                            "none";
+
+                        document.getElementById(
+                            `${pageId}-page`,
+                        ).style.display = "block";
+                    }
+
+                    function showCart() {
+                        document.getElementById("cartSidebar").style.right =
+                            "0";
+                    }
+
+                    function hideCart() {
+                        document.getElementById("cartSidebar").style.right =
+                            "-100%";
+                    }
+
+                    function addToCart(shoeId) {
+                        // Add cart functionality here
+                        const cartCount = document.getElementById("cartCount");
+                        cartCount.textContent =
+                            parseInt(cartCount.textContent) + 1;
+                    }
+
+                    function checkout() {
+                        alert("Checkout functionality to be implemented");
+                    }
+
+                    // Initialize the page
+                    document.addEventListener("DOMContentLoaded", () => {
+                        displayShoes();
+                    });
+                </script>
+            </body>
+        </html>
+    </head>
+</html>
